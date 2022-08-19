@@ -1,0 +1,51 @@
+# System-wide profile for interactive zsh(1) login shells.
+
+# Setup user specific overrides for this in ~/.zprofile. See zshbuiltins(1)
+# and zshoptions(1) for more details.
+
+if [ -x /usr/libexec/path_helper ]; then
+	eval `/usr/libexec/path_helper -s`
+fi
+
+
+# this is the APP dummy export POSTGRES_HOME=/Applications/Postgres.app/Contents/Versions/latest
+# data is /Library/PostgreSQL/13/data
+#superuser = postgres
+#password = jmcjmc
+# lsof -i :5432
+export POSTGRES_HOME=/Library/PostgreSQL/13
+export PATH=$POSTGRES_HOME/bin:$PATH
+
+# ls /Library/PostgreSQL/13/ -- installation
+#pg_ctl -D /usr/local/var/postgres start
+
+
+echo "Parent ZSH---> Hello Kenneth !"
+
+
+export GEM_HOME=$HOME/.gem
+
+export PATH=$GEM_HOME/bin:$PATH
+
+
+
+# define
+
+#export NPM_MODULES="/usr/local/lib/node_modules"
+
+#export NPM_CACHE="${HOME}/.npm"
+
+#export NODE_INSTALL=/usr/local/bin/node
+
+#export NODE_PATH=/usr/local/bin
+
+#export NPM_PACKAGES="${NPM_CACHE}/npm-packages"
+
+
+#path
+
+#export PATH="$NPM_CACHE/bin:$PATH"
+
+#export PATH="$NPM_PACKAGES/bin:$PATH"
+
+#export PATH="/usr/local/bin:$PATH"

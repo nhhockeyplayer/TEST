@@ -1,0 +1,149 @@
+#!/bin/zsh
+echo on
+
+git config --global user.email 'meanstack@hotmail.com'
+git config --global user.name 'nhhockeylayer'
+
+#export NPM_USER=nhmeanstack
+#export NPM_PASS=
+#export NPM_EMAIL=meanstacknh@gmail.com
+#npm config set registry https://registry.npmjs.org/
+
+
+#sudo -H npm "install" "." "--force" "--global"
+#/Users/meanstack/Library/Android/sdk
+export ANDROID_HOME="/Users/meanstack/Library/Android/sdk"
+export ANDROID_SDK_ROOT="/Users/meanstack/Library/Android/sdk"
+#export ANDROID_NDK_HOME="/usr/local/share/android-ndk"
+export ANDROID_STUDIO_HOME_APP="/Applications/Android\ Studio.app/Contents"
+export ANDROID_BUILD_CACHE=$HOME/.android/build-cache
+
+# SYSTEM VAR
+export NODE_OPTIONS=--max_old_space_size=4096
+export JAVA_OPTS="-Djava.library.path=/usr/local/opt/tomcat-native/lib -Djava.net.preferIPv4Stack=true"
+#-Djava.library.path=/usr/local/opt/tomcat-native/lib
+#export CATALINA_OPTS=-server -Xms1024m -Xmx3052m -Djava.library.path=/usr/local/opt/tomcat-native/lib
+export CATALINA_OPTS="-Djava.library.path=/usr/local/opt/tomcat-native/lib -server -Xms1024m -Xmx3052m -Djava.library.path=/usr/local/opt/tomcat-native/lib"
+#export CATALINA_OPTS=-server -Xms1024m -Xmx3052m -Djava.library.path=/usr/local/opt/tomcat-native/lib
+
+# USER PATHS
+export GRADLE_HOME=/usr/local/gradle/gradle-5.6.4
+export CORDOVA_ANDROID_GRADLE_DISTRIBUTION_URL="https\://services.gradle.org/distributions/gradle-5.6.4-all.zip"
+export DEVTOOLS=${HOME}/devtools
+export TOMCAT_HOME=/Users/meanstack02/Library/apache-tomcat-9.0.33
+export TOMCAT_NATIVE_HOME=-Djava.library.path=/usr/local/opt/tomcat-native/lib
+
+
+
+
+# postgres env setup
+export PGDB=postgres
+export PGUSER=postgres
+export PGPASSWORD=postgres
+export PGSCHEMA=energy
+export PGDATA=/usr/local/var/postgres
+
+# MONGODB env setup
+export MONGODB_HOME=~/devtools/mongodb-macos-x86_64-5.0.9
+export MONGODB_CLI_HOME=~/devtools/mongodb-atlas-cli_1.1.2_macos_arm64
+export MONGODB_SH_HOME=~/devtools/mongosh-1.5.0-darwin-x64
+export PATH="$MONGODB_HOME/bin:$MONGODB_CLI_HOME/bin:$MONGODB_SH_HOME/bin:$PATH"
+
+#export PROJECT=~/new/starter
+#export PROJECT=~/sls
+#export PROJECT=~/new/starter
+#export PROJECT=~/meanstacknh
+#export PROJECT=~/nhhockeyplayer
+#cd ~
+#cd $PROJECT
+
+
+HISTFILESIZE=20000
+#npm-cli-login
+
+
+# ----------------------
+# Git Aliases
+# ----------------------
+alias ga='git add'
+alias gaa='git add .'
+alias gaaa='git add --all'
+alias gau='git add --update'
+alias gb='git branch'
+alias gbd='git branch --delete '
+alias gc='git commit'
+alias gcm='git commit --message'
+alias gcf='git commit --fixup'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gcom='git checkout master'
+alias gcos='git checkout staging'
+alias gcod='git checkout develop'a
+alias gd='git diff'
+alias gda='git diff HEAD'
+alias gi='git init'
+alias glg='git log --graph --oneline --decorate --all'
+alias gld='git log --pretty=format:"%h %ad %s" --date=short --all'
+alias gm='git merge --no-ff'
+alias gma='git merge --abort'
+alias gmc='git merge --continue'
+alias gp='git pull'
+alias gpr='git pull --rebase'
+alias gr='git rebase'
+alias gs='git status'
+alias gss='git status --short'
+alias gst='git stash'
+alias gsta='git stash apply'
+alias gstd='git stash drop'
+alias gstl='git stash list'
+alias gstp='git stash pop'
+alias gsts='git stash save'
+
+#npm config set always-auth=true
+#npm config set legacy-peer-deps=true
+#npm config set ignore-engines=true
+#npm config set email=meanstack@hotmail.com
+#yarn config set scope=@nhhockeyplayer
+
+#yarn config set always-auth=true
+#yarn config set legacy-peer-deps=true
+#yarn config set ignore-engines=true
+#yarn config set email=meanstack@hotmail.com
+#yarn config set scope=@nhhockeyplayer
+
+
+# ----------------------
+# Git Functions
+# ----------------------
+# Git log find by commit message
+function glf() { git log --all --grep="$1"; }
+
+#CI/CD 2 access tokens for npm/github-actions publish cicd pipeline
+
+# 1. NPM_TOKEN publish the library to npm registry
+#If publishing to a private registry follow it’s instructions on generating an API token.
+#automation token from npm set in github project settings
+# Log into NPM and under your profile go to the “Auth Tokens” section and create a new token with “Publish” access. Next go to your Github repository and under “Settings -> Secrets” add a new token called NPM_AUTH_TOKEN and paste in the value.
+#export NPM_AUTH_TOKEN=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
+# 2. publish the library to npm registry
+# To publish changes back to GitHub from the pipeline you also need a personal access token
+# This can be created under your account settings in “Developer Settings -> Personal Access Token”. The only permissions you need to give this token are the repo permissions.
+# Under “Settings -> Secrets” as ACTION_AUTH_TOKEN (it seems you cannot name them with GITHUB_ in the name at all)
+#action auth token from npm set in github project settings
+#export ACTION_AUTH_TOKEN=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
+
+export ACTION_AUTH_TOKEN=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
+export NPM_AUTH_TOKEN=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
+export PASS_PHRASE=npmPublish
+#npm config set registry https://npm.pkg.github.com/
+#npm config set registry https://https://registry.npmjs.org/
+#npm login --scope=@nhhockeyplayer --registry=https://npm.pkg.github.com/
+#npm login --scope=@nhhockeyplayer --registry=https://registry.npmjs.org/
+#npm set //npm.pkg.github.com/:_authToken $ACTION_AUTH_TOKEN
+#npm set //registry.npmjs.org/:_authToken  $PASS_PHRASE
+
+# ng config --global cli.packageManager yarn
+
+export FORCE_NG_UPDATE=true
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
