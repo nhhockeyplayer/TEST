@@ -3,11 +3,31 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "preyarninstall": "npm install yarn@1.22.18 --no-save --no-package-lock",
+    "yarninstall": "yarn install",
+    "prepare": "husky install",
+    "checkchange": "beachball check",
+    "change": "beachball change",
+    "change:allow-major": "beachball change --disallowedChangeTypes=",
+    "bump": "beachball bump",
+    "precommit": "eslint src/**/*.ts",
+
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+
+    "lint": "nx workspace-lint && ng lint",
+    "e2e": "nx e2e",
+    "format": "nx format:write",
+    "format:write": "nx format:write",
+    "format:check": "nx format:check",
+    "update": "nx migrate latest",
+    "update:check": "ng update",
+    "help": "nx help",
+
+    "dep-graph": "npx nx reset && rm -rf node_modules/.cache && nx dep-graph"
   },
   "private": true,
   "dependencies": {
