@@ -3,7 +3,7 @@
 
 
 yarn ci:lint:all
-yarn ci:build:all
+#yarn ci:build:all
 yarn format:write
 yarn format:check
 yarn lint-staged

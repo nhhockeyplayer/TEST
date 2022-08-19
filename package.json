@@ -155,7 +155,6 @@
   },
   "lint-staged": {
     "nx.json": [
-      "yarn nxpm-stack lint",
       "yarn format:write"
     ],
     "*.scss": [
