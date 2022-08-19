@@ -81,7 +81,8 @@
     "update": "nx migrate latest",
     "update:check": "ng update",
     "help": "nx help",
-    "dep-graph": "npx nx reset && rm -rf node_modules/.cache && nx dep-graph"
+    "dep-graph": "npx nx reset && rm -rf node_modules/.cache && nx dep-graph",
+    "demo": "nx run demo:storybook"
   },
   "dependencies": {
     "@angular/animations": "~14.1.1",

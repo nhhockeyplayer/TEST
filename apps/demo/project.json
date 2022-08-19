@@ -113,6 +113,48 @@
           "quiet": true
         }
       }
+    },
+    "deploy-noop": {
+      "executor": "@nrwl/workspace:noop",
+      "options": {
+        "script": "ci:deploy:api",
+        "commands": [
+          {
+            "command": "echo figure out the commands that will do the deployment for you install in github action, or find one of the github actions themes you could use install google cloud cli run it right here or batch script that runs the google clousd script put multiple commands in here build cmd then run deploy cmd pass in the secrets as env variables to the script and this would work use something from a deploy.yml... docker containers+installers defer to  deploy-main.yml whereby googlegloud block USES WITH account-key, project_id both set with secrets keyes and then gcloud builds submit, quiet, machine, tag https://youtu.be/7UpU_AqjJKs?t=3840"
+          },
+          {
+            "command": "echo if your doing an affected cmd on the main branch, like when you push to main or pull_request merged into main, then you want to use the --base $BEFORE_SHA becuse otherwise youll be comparing the same main to main and nothign will ever change and you wont get any errors and you will think yeah it worked but when nothing actually ran"
+          },
+          {
+            "command": "echo remotes/origin/main if your doing pull_request or something of that nature like FEATURE_BUILD where your not on the main branch but if your on the main branch use $BEFORE_SHA and it shoudl work for you"
+          },
+          {
+            "command": "echo blog posts that cover this... @prestonjlamb github actions src maps for ng apps to push to century shorter blog post repeats same stuff specific to angular and nest"
+          },
+          {
+            "command": "https://www.prestonlamb.com/ ebook, pjlc.dev/demo pglc/demo, https://twitter.com/prestonjlamb, https://github.com/pjlamb12, https://www.prestonlamb.com/blog, https://www.medium.com/ngconf, https://www.thinkster.io/ "
+          },
+          {
+            "command": "yarn affected:deploy"
+          }
+        ]
+      }
+    },
+    "deploy-run-scripts": {
+      "executor": "@nrwl/workspace:run-script",
+      "options": {
+        "script": "ci:deploy:api"
+      }
+    },
+    "deploy-run-commands": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {}
+    },
+    "deploy": {
+      "executor": "@nrwl/workspace:run-script",
+      "options": {
+        "script": "ci:deploy:noop"
+      }
     }
   },
   "tags": []

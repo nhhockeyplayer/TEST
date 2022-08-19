@@ -1,0 +1,30 @@
+# If this flow starts to hit limitations, here is a good "upgraded" version of this flow - https://github.com/marketplace/actions/nrwl-nx
+name: pull-request-workflow
+
+on:
+    pull_request:
+        # Only run this flow for PRs targeting main
+        branches: [nobrnch]
+        # Changes that don't require a CI/CD run
+        paths-ignore:
+            - 'README.md'
+
+jobs:
+    ci:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0 # This ensures we get the *entire* git history (required for nx affected commands to work)
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 'lts/fermium'
+            - run: git fetch origin main # The nx affected commands compare the current PR to the main branch, so we need to fetch it for that comparison
+            - run: yarn install --frozen-lockfile # (similar to npm ci) - https://classic.yarnpkg.com/en/docs/cli/install#toc-yarn-install
+            - name: Lint affected files
+              shell: bash
+              run: yarn ci:lint:all
+            - name: Build affected apps
+              shell: bash
+              run: yarn ci:build:all

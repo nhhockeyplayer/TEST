@@ -1,0 +1,25 @@
+name: Deploy affected apps to Host
+
+on:
+    push:
+        branches: [nobrnch]
+env:
+    BEFORE_SHA: ${{ github.event.before }}
+    # Define this in the repo's "secrets" tab under settings
+    TEST_API_ENDPOINT: ${{ secrets.TEST_API_ENDPOINT }}
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 'lts/fermium'
+            - run: git fetch origin main # The nx affected commands compare the current PR to the main branch, so we need to fetch it for that comparison
+            - run: yarn install --frozen-lockfile # (similar to npm ci) - https://classic.yarnpkg.com/en/docs/cli/install#toc-yarn-install
+            - name: Deploy affected apps
+              shell: bash
+              run: yarn ci:deploy:affected --base=$BEFORE_SHA # By setting the base to BEFORE_SHA, we are saying, "compare the current (HEAD) to the prior commit on the main branch (i.e. HEAD~1)"
