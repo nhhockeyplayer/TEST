@@ -1,4 +1,3 @@
-
 /**
  * This is a minimal script to publish your package to "npm".
  * This is meant to be used as-is or customize as you see fit.
@@ -8,7 +7,7 @@
  * You might need to authenticate with NPM before running this script.
  */
 
-import { readCachedProjectGraph  } from '@nrwl/devkit';
+import { readCachedProjectGraph } from '@nrwl/devkit';
 import { execSync } from 'child_process';
 import { readFileSync, writeFileSync } from 'fs';
 import chalk from 'chalk';
@@ -17,7 +16,7 @@ function invariant(condition, message) {
   if (!condition) {
     console.error(chalk.bold.red(message));
     process.exit(1);
-  } 
+  }
 }
 
 // Executing publish script: node path/to/publish.mjs {name} --version {version} --tag {tag}
@@ -31,13 +30,12 @@ invariant(
   `No version provided or version did not match Semantic Versioning, expected: #.#.#-tag.# or #.#.#, got ${version}.`
 );
 
-
 const graph = readCachedProjectGraph();
 const project = graph.nodes[name];
 
 invariant(
   project,
- `Could not find project "${name}" in the workspace. Is the project.json configured correctly?`
+  `Could not find project "${name}" in the workspace. Is the project.json configured correctly?`
 );
 
 const outputPath = project.data?.targets?.build?.options?.outputPath;

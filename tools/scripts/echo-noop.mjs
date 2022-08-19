@@ -1,5 +1,5 @@
 function echoNoop() {
-    console.log('echoNoop() tools/scripts triggered');
+  console.log('echoNoop() tools/scripts triggered');
 }
 
 echoNoop();

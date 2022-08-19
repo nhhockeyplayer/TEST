@@ -12,5 +12,8 @@ export const environment = {
  *
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
+ *
+ * We’re using a hybrid approach with a root level .env file containing all of the sensitive key value pairs for all environments and then we have  custom tools/set-environment.ts scripts that run before serve or build steps that use dotenv to read the root .env and yargs to take an argument indicating the runtime environment with fs to dynamically output the appropriate values in project-level env or environment.ts files. There are doubtless better approaches but it works. (edited)
+ *
  */
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
