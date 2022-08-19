@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "patch: test",
+  "packageName": "@nhhockeyplayer/test",
+  "email": "meanstack@hotmail.com",
+  "dependentChangeType": "patch"
+}
