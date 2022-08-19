@@ -265,3 +265,43 @@ Nx Cloud pairs with Nx in order to enable you to build and test code more rapidl
 Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
 
 Visit [Nx Cloud](https://nx.app/) to learn more.
+
+#########
+
+# automation ids
+
+https://stackoverflow.com/questions/60039576/how-to-generate-data-automation-id-for-each-option-dynamically
+
+https://stackoverflow.com/questions/60070086/how-to-trim-whitespaces-while-setting-data-automation-id-dynamically
+
+# how about if they put anything they want attributes the way THEY NEED and want and our directive will strip them
+
+and our directive will remove it during production completely... the first in last gone approach
+https://betterprogramming.pub/decouple-tests-with-data-attributes-c920606c5f27
+
+import {Directive, ElementRef, Renderer2} from '@angular/core';
+import {environment} from '../../../environments/environment';
+
+@Directive({
+// tslint:disable-next-line:directive-selector
+selector: `[data-angular]`
+})
+export class DataAngularDirective {
+constructor(private el: ElementRef, private renderer: Renderer2) {
+if (environment.production) {
+renderer.removeAttribute(el.nativeElement, 'data-angular');
+}
+}
+}
+
+# same idea with cypress
+
+https://medium.com/agilix/angular-and-cypress-data-cy-attributes-d698c01df062
+
+# SLACK
+
+@nrwl/community
+nrwlcommunity.slack.com
+
+@nrwl/community
+nrwlcommunity.slack.com
